@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    "use strict";
+    /*global RED*/
+    RED.nodes.registerType('cote-config', {
+        category: 'config',
+        defaults: {
+            type: {
+                value: "Broadcast",
+                required: true,
+            },
+            host: {
+                value: "",
+                required: false
+            },
+            port: {
+                value: "",
+                required: false
+            },
+            dbase: {
+                value: "",
+                required: false
+            },
+            pass: {
+                value: "",
+                required: false
+            }
+        },
+        label: function() {
+            return this.host;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="cote-config">
+    <div class="form-row">
+        <label for="node-config-input-discovery"><i class="fa fa-unlock"></i> Discovery Type </label>
+        <select id="node-config-input-discovery">
+            <option value="Broadcast" selected>Broadcast</option>
+            <option value="Multicast">Multicast</option>
+            <option value="Redis">Redis</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i>Redis Host or Broadcast/Multicast Address</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-port"><i class="fa fa-server"></i>Redis Port</label>
+        <input type="text" id="node-config-input-port">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-dbase"><i class="fa fa-random"></i>Redis DB</label>
+        <input type="text" id="node-config-input-dbase">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-pass"><i class="fa fa-lock"></i>Redis Password</label>
+        <input type="password" id="node-config-input-pass">
+    </div>
+</script>

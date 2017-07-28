@@ -1,0 +1,37 @@
+{
+  "name": "node-red-contrib-cotejs",
+  "version": "0.0.1",
+  "description": "CoteJS nodes for Node Red",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chameleonbr/node-red-contrib-cotejs.git"
+  },
+  "keywords": [
+    "cotejs",
+    "microservices",
+    "node-red"
+  ],
+  "node-red": {
+    "nodes": {
+      "config": "./components/config.js",
+      "responder": "./components/responder.js",
+      "requester": "./components/requester.js",
+      "publisher": "./components/publisher.js",
+      "subscriber": "./components/subscriber.js",
+      "sockend": "./components/sockend.js"
+    }
+  },
+  "author": "André Avila",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chameleonbr/node-red-contrib-cotejs/issues"
+  },
+  "homepage": "https://github.com/chameleonbr/node-red-contrib-cotejs#readme",
+  "dependencies": {
+    "cote": "^0.15.1"
+  }
+}
