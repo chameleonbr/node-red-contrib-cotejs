@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    /*global RED*/
+    RED.nodes.registerType('cote-publisher', {
+        category: 'output',
+        inputs: 1,
+        outputs: 0,
+        color: "#ffaaaa",
+        icon: "redis.png",
+        align: "right",
+        paletteLabel: "publisher",
+        defaults: {
+            server: {
+                value: "",
+                type: "cote-config"
+            },
+            command: {
+                value: "rpush"
+            },
+            name: {
+                value: ""
+            },
+            topic: {
+                value: ""
+            }
+        },
+        label: function() {
+            return this.name || "Cote Publisher";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="cote-publisher">
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-globe"></i> Config</label>
+        <input type="text" id="node-input-config" placeholder="Config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic"><i class="icon-tasks"></i> Topic</label>
+        <input type="text" id="node-input-topic" placeholder="Topic">
+    </div>
+    <div class="form-row">
+        <label for="node-input-namespace"><i class="fa fa-tag"></i> Namespace</label>
+        <input type="text" id="node-input-namespace" placeholder="Namespace">
+    </div>
+    <div class="form-row">
+        <label for="node-input-key"><i class="icon-tasks"></i> Key</label>
+        <input type="text" id="node-input-key" placeholder="Key">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="cote-publisher">
+    <p>Cote Publisher</p>
+    <p>Acts as Publisher to CoteJS subscribers</p>
+    <p>The msg.topic is key name to publish.</p>
+</script>
