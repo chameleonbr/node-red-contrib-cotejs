@@ -1,7 +1,7 @@
 <script type="text/javascript">
     /*global RED*/
     RED.nodes.registerType('cote-publisher', {
-        category: 'output',
+        category: 'cote',
         inputs: 1,
         outputs: 0,
         color: "#ffaaaa",
@@ -9,7 +9,7 @@
         align: "right",
         paletteLabel: "publisher",
         defaults: {
-            server: {
+            config: {
                 value: "",
                 type: "cote-config"
             },
@@ -27,7 +27,7 @@
             }
         },
         label: function() {
-            return this.name || "Cote Publisher";
+            return this.name || "CotePub";
         }
     });
 </script>

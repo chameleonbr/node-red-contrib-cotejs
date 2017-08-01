@@ -1,7 +1,7 @@
 <script type="text/javascript">
     /*global RED*/
     RED.nodes.registerType('cote-responder', {
-        category: 'output',
+        category: 'cote',
         inputs: 0,
         outputs: 1,
         color: "#ffaaaa",
@@ -9,7 +9,7 @@
         align: "right",
         paletteLabel: "responder",
         defaults: {
-            server: {
+            config: {
                 value: "",
                 type: "cote-config"
             },
@@ -27,7 +27,7 @@
             }
         },
         label: function() {
-            return this.name || "Cote Responder";
+            return this.name || "CoteResp";
         }
     });
 </script>
@@ -59,4 +59,37 @@
     <p>Cote responder</p>
     <p>CoteJS Responder input</p>
     <p>The msg.topic is function name.</p>
+</script>
+
+<script type="text/javascript">
+RED.nodes.registerType('cote-responder-out', {
+        category: 'cote',
+        inputs: 1,
+        outputs: 0,
+        color: "#ffaaaa",
+        icon: "redis.png",
+        align: "right",
+        paletteLabel: "responder out",
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        label: function() {
+            return this.name || "CoteRespOut";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="cote-responder-out">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="cote-responder-out">
+    <p>Cote responder out</p>
+    <p>CoteJS Responder output</p>
+    <p>Return message to cote</p>
 </script>

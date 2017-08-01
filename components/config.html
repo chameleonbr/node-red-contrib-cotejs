@@ -4,8 +4,8 @@
     RED.nodes.registerType('cote-config', {
         category: 'config',
         defaults: {
-            type: {
-                value: "Broadcast",
+            ctype: {
+                value: "",
                 required: true,
             },
             host: {
@@ -26,18 +26,18 @@
             }
         },
         label: function() {
-            return this.host;
+            return this.ctype;
         }
     });
 </script>
 
 <script type="text/x-red" data-template-name="cote-config">
     <div class="form-row">
-        <label for="node-config-input-discovery"><i class="fa fa-unlock"></i> Discovery Type </label>
-        <select id="node-config-input-discovery">
-            <option value="Broadcast" selected>Broadcast</option>
-            <option value="Multicast">Multicast</option>
-            <option value="Redis">Redis</option>
+        <label for="node-config-input-ctype"><i class="fa fa-unlock"></i> Discovery Type </label>
+        <select id="node-config-input-ctype">
+            <option value="broadcast" selected>Broadcast</option>
+            <option value="multicast">Multicast</option>
+            <option value="redis">Redis</option>
         </select>
     </div>
     <div class="form-row">

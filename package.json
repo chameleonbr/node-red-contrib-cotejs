@@ -22,7 +22,7 @@
       "requester": "./components/requester.js",
       "publisher": "./components/publisher.js",
       "subscriber": "./components/subscriber.js",
-      "sockend": "./components/sockend.js"
+      "sockend": "./components/sockend.js"  
     }
   },
   "author": "André Avila",
