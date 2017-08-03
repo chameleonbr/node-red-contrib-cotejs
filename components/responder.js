@@ -1,52 +1,26 @@
 const cote = require('cote');
 
+const connector = require('./connector');
+
 module.exports = function (RED) {
+
+    RED.events.on('nodes-started', () => {
+        connector.events.emit('start', 'res');
+    })
+
     function CoteResponder(n) {
         RED.nodes.createNode(this, n);
         this.config = RED.nodes.getNode(n.config);
         this.name = n.name;
         this.topic = n.topic;
-        this.namespace = n.namespace;
-        this.key = n.key;
+        this.ntype = 'res';
         let node = this;
 
-        let options = {
-            name: node.name || "CoteResponder@"+node.id,
-            namespace: node.namespace || undefined,
-            key: node.key || undefined
-        }
-        switch (node.config.ctype) {
-            case 'redis':
-                options['redis'] = {
-                    host: node.config.host || undefined,
-                    port: node.config.port || undefined,
-                    password: node.config.pass || undefined,
-                }
-                break;
-            case 'multicast':
-                options['multicast'] = node.config.host;
-                break;
-            case 'broadcast':
-            default:
-                options['broadcast'] = node.config.host || '255.255.255.255'
-                break;
-        }
-
-        const res = new cote.Responder(options);
+        connector.events.emit('attach', node);
 
         node.on('close', function (done) {
-            res.close();
+            connector.events.emit('detach', node);
             done();
-        });
-
-        res.on(node.topic, (req) => {
-            return new Promise((resolve, reject) => {
-                msg = {};
-                msg.payload = req;
-                msg._cbResolve = resolve;
-                msg._cbReject = reject;
-                node.send(msg);
-            })
         });
     }
     RED.nodes.registerType("cote-responder", CoteResponder);

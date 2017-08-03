@@ -23,12 +23,21 @@
             pass: {
                 value: "",
                 required: false
+            },
+            namespace: {
+                value: "",
+                required: false
+            },
+            key: {
+                value: "",
+                required: false
             }
         },
-        label: function() {
-            return this.ctype;
+        label: function () {
+            return this.ctype + "#" + this.id;
         }
     });
+
 </script>
 
 <script type="text/x-red" data-template-name="cote-config">
@@ -55,5 +64,13 @@
     <div class="form-row">
         <label for="node-config-input-pass"><i class="fa fa-lock"></i>Redis Password</label>
         <input type="password" id="node-config-input-pass">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-namespace"><i class="fa fa-tag"></i> Namespace</label>
+        <input type="text" id="node-config-input-namespace" placeholder="Namespace">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-key"><i class="icon-tasks"></i> Key</label>
+        <input type="text" id="node-config-input-key" placeholder="Key">
     </div>
 </script>

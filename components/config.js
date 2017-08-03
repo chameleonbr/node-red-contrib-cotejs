@@ -6,6 +6,8 @@ module.exports = function (RED) {
         this.port = n.port;
         this.dbase = n.dbase;
         this.pass = n.pass;
+        this.namespace = n.namespace;
+        this.key = n.key;
     }
     RED.nodes.registerType("cote-config", CoteConfig);
 }
